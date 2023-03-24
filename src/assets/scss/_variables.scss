@@ -1,0 +1,10 @@
+$dark: '#000000';
+$primary: '#18A0FB';
+$light: '#FFFFFF';
+$default: '#F6F6F6';
+:root {
+  --dark: #{$dark} !important;
+  --primary: #{$primary} !important;
+  --light: #{$light} !important;
+  --default: #{$default} !important;
+}
