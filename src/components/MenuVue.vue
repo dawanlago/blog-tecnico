@@ -11,7 +11,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "MenuVue",
+};
 </script>
 
 <style lang="scss" scoped>
