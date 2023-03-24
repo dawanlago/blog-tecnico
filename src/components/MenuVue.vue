@@ -1,15 +1,12 @@
 <template>
   <div id="menu">
-    <div class="content">
-      <h1>Blog.com</h1>
-      <ul>
-        <li>
-          <a>Posts</a>
-        </li>
-        <li>Usuários</li>
-      </ul>
-    </div>
-    <div class="line"></div>
+    <h1>Blog.com</h1>
+    <ul>
+      <li>
+        <a href="/">Posts</a>
+      </li>
+      <li><a href="#"> Usuários </a></li>
+    </ul>
   </div>
 </template>
 
@@ -21,13 +18,11 @@ export default {};
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap");
 #menu {
   height: 60px;
-  padding: 0 80px;
 
-  .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 
   h1 {
     font-family: "Cinzel Decorative", cursive;
@@ -39,18 +34,21 @@ export default {};
 
     li {
       float: right;
-      color: var(--primary);
       font-size: 15px;
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        font-weight: bold;
+      }
     }
 
     li:first-child {
       margin-left: 50px;
     }
-  }
-  .line {
-    background-color: var(--primary);
-    height: 1px;
-    width: 100%;
   }
 }
 </style>
