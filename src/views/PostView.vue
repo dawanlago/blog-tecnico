@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <button>Voltar</button>
+    <button @click="back">Voltar</button>
     <div>
       <div class="card">
         <h3>
@@ -14,16 +14,35 @@
       </div>
     </div>
     <h3 class="title-comments">Comentários</h3>
+    <CommentsVue />
   </div>
 </template>
   
 <script>
+import CommentsVue from "@/components/CommentsVue.vue";
+
+import { GetComments } from "@/services/GetComments";
 export default {
   name: "PostView",
+  components: { CommentsVue },
+  methods: {
+    async loadComments() {
+      const getComments = new GetComments();
+      const comments = await getComments.execute(this.$store.state.post.id);
+
+      this.$store.commit("setComments", comments);
+    },
+    back() {
+      this.$router.back();
+    },
+  },
   created() {
     if (Object.keys(this.$store.state.post).length <= 0) {
       this.$router.push("/");
+      return;
     }
+
+    this.loadComments();
   },
 };
 </script>
@@ -55,6 +74,7 @@ export default {
     color: var(--primary);
     text-decoration: none;
     font-size: 16px;
+    margin-top: 10px;
   }
 }
 

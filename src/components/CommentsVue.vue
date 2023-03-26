@@ -1,33 +1,30 @@
 <template>
   <div>
-    <div class="card" v-for="(post, index) in $store.state.posts" :key="index">
+    <div
+      class="card"
+      v-for="(comments, index) in $store.state.comments"
+      :key="index"
+    >
       <h3>
-        {{ post.title }}
+        {{ comments.name }}
       </h3>
       <p>
-        {{ post.body }}
+        {{ comments.body }}
       </p>
       <div class="footer">
-        <a href="">{{ post.username }}</a>
-        <button @click="handlePost(post)">Ver comentários</button>
+        <a href="">{{ comments.email }}</a>
       </div>
     </div>
   </div>
 </template>
-
-<script>
+  
+  <script>
 export default {
   name: "CardVue",
-  methods: {
-    handlePost(post) {
-      this.$store.commit("setPost", post);
-      this.$router.push("/post");
-    },
-  },
 };
 </script>
-
-<style lang="scss" scoped>
+  
+  <style lang="scss" scoped>
 .card {
   width: 100%;
   min-height: 140px;
@@ -53,23 +50,13 @@ export default {
   .footer {
     height: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
     a {
       color: var(--primary);
       text-decoration: none;
       font-size: 16px;
-    }
-
-    button {
-      height: 100%;
-      width: 200px;
-      margin-right: -20px;
-      background-color: var(--primary);
-      border: none;
-      font-size: 16px;
-      font-weight: 400;
     }
   }
 }

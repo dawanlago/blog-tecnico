@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     posts: [],
-    post: {}
+    post: {},
+    comments: [],
   },
   mutations: {
     setPosts(state, posts) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     setPost(state, post) {
       state.post = post
+    },
+    setComments(state, comments) {
+      state.comments = comments
     }
   },
 

@@ -8,6 +8,7 @@
 <script>
 import TitleVue from "@/components/TitleVue.vue";
 import CardVue from "@/components/CardVue.vue";
+
 import { GetAllPosts } from "@/services/GetAllPosts";
 import { GetUser } from "@/services/GetUser";
 
