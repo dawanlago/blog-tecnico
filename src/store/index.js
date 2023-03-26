@@ -5,13 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-  },
-  getters: {
+    posts: []
   },
   mutations: {
+    setPosts(state, posts) {
+      state.posts = posts
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
+
 })

@@ -1,96 +1,17 @@
 <template>
   <div>
-    <v-row class="list-class" no-gutters>
-      <v-col cols="12">
-        <div class="card">
-          <h3>
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </h3>
-          <p>
-            quia et suscipit\nsuscipit recusandae consequuntur expedita et
-            cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est
-            autem sunt rem eveniet architecto
-          </p>
-          <div class="footer">
-            <a href="">dawanlago1@gmail.com</a>
-            <button>Ver mais</button>
-          </div>
-        </div>
-      </v-col>
-
-      <v-col cols="12">
-        <div class="card">
-          <h3>
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </h3>
-          <p>
-            quia et suscipit\nsuscipit recusandae consequuntur expedita et
-            cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est
-            autem sunt rem eveniet architecto
-          </p>
-          <div class="footer">
-            <a href="">dawanlago1@gmail.com</a>
-            <button>Ver mais</button>
-          </div>
-        </div>
-      </v-col>
-
-      <v-col cols="12">
-        <div class="card">
-          <h3>
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </h3>
-          <p>
-            quia et suscipit\nsuscipit recusandae consequuntur expedita et
-            cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est
-            autem sunt rem eveniet architecto
-          </p>
-          <div class="footer">
-            <a href="">dawanlago1@gmail.com</a>
-            <button>Ver mais</button>
-          </div>
-        </div>
-      </v-col>
-
-      <v-col cols="12">
-        <div class="card">
-          <h3>
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </h3>
-          <p>
-            quia et suscipit\nsuscipit recusandae consequuntur expedita et
-            cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est
-            autem sunt rem eveniet architecto
-          </p>
-          <div class="footer">
-            <a href="">dawanlago1@gmail.com</a>
-            <button>Ver mais</button>
-          </div>
-        </div>
-      </v-col>
-
-      <v-col cols="12">
-        <div class="card">
-          <h3>
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </h3>
-          <p>
-            quia et suscipit\nsuscipit recusandae consequuntur expedita et
-            cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est
-            autem sunt rem eveniet architecto
-          </p>
-          <div class="footer">
-            <a href="">dawanlago1@gmail.com</a>
-            <button>Ver mais</button>
-          </div>
-        </div>
-      </v-col>
-    </v-row>
+    <div class="card" v-for="(post, index) in $store.state.posts" :key="index">
+      <h3>
+        {{ post.title }}
+      </h3>
+      <p>
+        {{ post.body }}
+      </p>
+      <div class="footer">
+        <a href="">{{ post.username }}</a>
+        <button>Ver mais</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -132,7 +53,6 @@ export default {
     a {
       color: var(--primary);
       text-decoration: none;
-      text-transform: lowercase;
       font-size: 16px;
     }
 
