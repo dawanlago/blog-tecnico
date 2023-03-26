@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    posts: []
+    posts: [],
+    post: {}
   },
   mutations: {
     setPosts(state, posts) {
       state.posts = posts
+    },
+    setPost(state, post) {
+      state.post = post
     }
   },
 

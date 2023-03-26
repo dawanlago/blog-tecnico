@@ -1,13 +1,11 @@
 <template>
   <div class="home">
-    <MenuVue />
     <TitleVue title="Posts" />
     <CardVue />
   </div>
 </template>
 
 <script>
-import MenuVue from "@/components/MenuVue.vue";
 import TitleVue from "@/components/TitleVue.vue";
 import CardVue from "@/components/CardVue.vue";
 import { GetAllPosts } from "@/services/GetAllPosts";
@@ -16,7 +14,6 @@ import { GetUser } from "@/services/GetUser";
 export default {
   name: "HomeView",
   components: {
-    MenuVue,
     TitleVue,
     CardVue,
   },

@@ -9,7 +9,7 @@
       </p>
       <div class="footer">
         <a href="">{{ post.username }}</a>
-        <button>Ver mais</button>
+        <button @click="handlePost(post)">Ver mais</button>
       </div>
     </div>
   </div>
@@ -18,6 +18,12 @@
 <script>
 export default {
   name: "CardVue",
+  methods: {
+    handlePost(post) {
+      this.$store.commit("setPost", post);
+      this.$router.push("/post");
+    },
+  },
 };
 </script>
 

@@ -2,10 +2,10 @@
   <div id="menu">
     <h1>Blog.com</h1>
     <ul>
+      <li><a href="#"> Usuários </a></li>
       <li>
         <a href="/">Posts</a>
       </li>
-      <li><a href="#"> Usuários </a></li>
     </ul>
   </div>
 </template>
