@@ -28,7 +28,7 @@ export default {
 
   h1 {
     font-family: "Cinzel Decorative", cursive;
-    color: var(--primary);
+    color: var(--primary) !important;
     font-size: 36px;
   }
   ul {
@@ -39,7 +39,7 @@ export default {
       font-size: 15px;
 
       a {
-        color: var(--primary);
+        color: var(--primary) !important;
         text-decoration: none;
       }
 

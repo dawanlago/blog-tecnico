@@ -1,19 +1,18 @@
 <template>
   <div class="post">
-    <button @click="back">Voltar</button>
-    <div>
-      <div class="card">
-        <h3>
-          {{ $store.state.post.title }}
-        </h3>
-        <p>
-          {{ $store.state.post.body }}
-        </p>
+    <v-btn @click="back">Voltar</v-btn>
+    <v-card variant="outlined" light>
+      <v-card-title> {{ $store.state.post.title }} </v-card-title>
+      <v-card-subtitle
+        ><v-icon size="16">mdi-account</v-icon
+        >{{ $store.state.post.username }}</v-card-subtitle
+      >
+      <v-card-text> {{ $store.state.post.body }} </v-card-text>
+    </v-card>
 
-        <a href="">{{ $store.state.post.username }}</a>
-      </div>
-    </div>
-    <h3 class="title-comments">Comentários</h3>
+    <h3 class="title-comments">
+      {{ numberComments }} comentário<span v-if="numberComments > 1">s</span>
+    </h3>
     <CommentsVue />
   </div>
 </template>
@@ -24,12 +23,18 @@ import CommentsVue from "@/components/CommentsVue.vue";
 import { GetComments } from "@/services/GetComments";
 export default {
   name: "PostView",
+  data: () => {
+    return {
+      numberComments: 0,
+    };
+  },
   components: { CommentsVue },
   methods: {
     async loadComments() {
       const getComments = new GetComments();
       const comments = await getComments.execute(this.$store.state.post.id);
 
+      this.numberComments = comments.length;
       this.$store.commit("setComments", comments);
     },
     back() {
@@ -48,45 +53,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
+.v-sheet.v-card {
   width: 100%;
   min-height: 140px;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  margin-top: 10px;
+  padding: 20px 20px;
+  margin: 10px 0;
+  border-radius: 0;
   border-bottom: 1px solid var(--primary);
+  .v-card__title {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+  }
 
-  h3 {
+  .v-card__text {
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  p {
-    font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  a {
-    color: var(--primary);
+  .v-card__subtitle {
+    display: flex;
+    align-items: center;
+    color: var(--primary) !important;
     text-decoration: none;
     font-size: 16px;
-    margin-top: 10px;
+    .v-icon {
+      margin-right: 5px;
+      color: var(--primary) !important;
+    }
   }
 }
-
-button {
-  background-color: var(--default);
-  border: none;
-  height: 40px;
-  width: 150px;
-  font-weight: 400;
-  font-size: 20px;
-}
-
 .title-comments {
   margin-left: 30px;
   font-size: 20px;

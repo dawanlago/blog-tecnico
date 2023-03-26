@@ -1,17 +1,25 @@
 <template>
-  <div>
-    <div class="card" v-for="(post, index) in $store.state.posts" :key="index">
-      <h3>
-        {{ post.title }}
-      </h3>
-      <p>
-        {{ post.body }}
-      </p>
-      <div class="footer">
-        <a href="">{{ post.username }}</a>
-        <button @click="handlePost(post)">Ver comentários</button>
-      </div>
-    </div>
+  <div id="card-vue">
+    <v-row no-gutters>
+      <v-col cols="12" v-for="(post, index) in $store.state.posts" :key="index">
+        <v-card variant="outlined" light>
+          <v-card-title> {{ post.title }} </v-card-title>
+          <v-card-subtitle
+            ><v-icon size="16">mdi-account</v-icon
+            >{{ post.username }}</v-card-subtitle
+          >
+          <v-card-text> {{ post.body }} </v-card-text>
+          <v-card-actions>
+            <v-btn
+              color="primary"
+              :block="$vuetify.breakpoint.xsOnly"
+              @click="handlePost(post)"
+              >Ver comentários</v-btn
+            >
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -28,48 +36,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
+.v-sheet.v-card {
   width: 100%;
   min-height: 140px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 20px 0;
   margin-top: 10px;
 
-  h3 {
+  .v-card__title {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+  }
+
+  .v-card__text {
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 0;
   }
 
-  p {
-    font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .footer {
-    height: 40px;
+  .v-card__subtitle {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    color: var(--primary) !important;
+    text-decoration: none;
+    font-size: 16px;
 
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    button {
-      height: 100%;
-      width: 200px;
-      margin-right: -20px;
-      background-color: var(--primary);
-      border: none;
-      font-size: 16px;
-      font-weight: 400;
+    .v-icon {
+      margin-right: 5px;
+      color: var(--primary) !important;
     }
   }
 }

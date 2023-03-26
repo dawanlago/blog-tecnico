@@ -3,8 +3,8 @@
 
 * {
     font-family: 'Montserrat', sans-serif;
-    color: var(--dark);
+    color: var(--dark) !important;
 }
 body {
-    padding: 0 80px;
+    padding: 0 80px 10px;
 }
