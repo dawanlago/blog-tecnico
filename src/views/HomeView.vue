@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <TitleVue title="Posts" />
-    <CardVue />
+    <CardPostsVue />
   </div>
 </template>
 
 <script>
 import TitleVue from "@/components/TitleVue.vue";
-import CardVue from "@/components/CardVue.vue";
+import CardPostsVue from "@/components/CardPostsVue.vue";
 
 import { GetAllPosts } from "@/services/GetAllPosts";
 import { GetUser } from "@/services/GetUser";
@@ -16,7 +16,7 @@ export default {
   name: "HomeView",
   components: {
     TitleVue,
-    CardVue,
+    CardPostsVue,
   },
   methods: {
     async loadPosts() {

@@ -2,8 +2,8 @@
   <div id="menu">
     <h1>Blog.com</h1>
     <ul>
-      <li><a href="#"> Usuários </a></li>
-      <li>
+      <li v-if="$route.name != 'users'"><a href="/users"> Usuários </a></li>
+      <li v-if="$route.name != 'home'">
         <a href="/">Posts</a>
       </li>
     </ul>

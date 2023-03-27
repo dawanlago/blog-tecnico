@@ -14,6 +14,11 @@ const routes = [
     name: 'post',
     component: () => import(/* webpackChunkName: "about" */ '../views/PostView.vue')
   },
+  {
+    path: '/users',
+    name: 'users',
+    component: () => import(/* webpackChunkName: "about" */ '../views/UsersView.vue')
+  },
 ]
 
 const router = new VueRouter({

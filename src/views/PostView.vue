@@ -13,12 +13,12 @@
     <h3 class="title-comments">
       {{ numberComments }} comentário<span v-if="numberComments > 1">s</span>
     </h3>
-    <CommentsVue />
+    <CardCommentsVue />
   </div>
 </template>
   
 <script>
-import CommentsVue from "@/components/CommentsVue.vue";
+import CardCommentsVue from "@/components/CardCommentsVue.vue";
 
 import { GetComments } from "@/services/GetComments";
 export default {
@@ -28,7 +28,7 @@ export default {
       numberComments: 0,
     };
   },
-  components: { CommentsVue },
+  components: { CardCommentsVue },
   methods: {
     async loadComments() {
       const getComments = new GetComments();

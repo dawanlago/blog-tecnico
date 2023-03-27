@@ -1,41 +1,36 @@
 <template>
-  <div id="card-vue">
+  <div id="card-comments-vue">
     <v-row no-gutters>
-      <v-col cols="12" v-for="(post, index) in $store.state.posts" :key="index">
+      <v-col
+        cols="12"
+        v-for="(comment, index) in $store.state.comments"
+        :key="index"
+      >
         <v-card variant="outlined" light>
-          <v-card-title> {{ post.title }} </v-card-title>
+          <v-card-title> {{ comment.name }} </v-card-title>
           <v-card-subtitle
             ><v-icon size="16">mdi-account</v-icon
-            >{{ post.username }}</v-card-subtitle
+            >{{ comment.email | lowerCased }}</v-card-subtitle
           >
-          <v-card-text> {{ post.body }} </v-card-text>
-          <v-card-actions>
-            <v-btn
-              color="primary"
-              :block="$vuetify.breakpoint.xsOnly"
-              @click="handlePost(post)"
-              >Ver comentários</v-btn
-            >
-          </v-card-actions>
+          <v-card-text> {{ comment.body }} </v-card-text>
         </v-card>
       </v-col>
     </v-row>
   </div>
 </template>
-
-<script>
+  
+  <script>
 export default {
-  name: "CardVue",
-  methods: {
-    handlePost(post) {
-      this.$store.commit("setPost", post);
-      this.$router.push("/post");
+  name: "CardCommentsVue",
+  filters: {
+    lowerCased(value) {
+      return value.toLowerCase();
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
+  
+  <style lang="scss" scoped>
 .v-sheet.v-card {
   width: 100%;
   min-height: 140px;
