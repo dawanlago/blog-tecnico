@@ -45,7 +45,11 @@ export default {
     },
   },
   async created() {
-    this.loadPosts();
+    this.$root.$emit("Spinner::show");
+    await this.loadPosts();
+    setTimeout(() => {
+      this.$root.$emit("Spinner::hide");
+    }, 300);
   },
 };
 </script>

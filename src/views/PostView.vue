@@ -63,13 +63,15 @@ export default {
       this.$router.back();
     },
   },
-  created() {
+  async created() {
+    this.$root.$emit("Spinner::show");
     if (Object.keys(this.$store.state.post).length <= 0) {
       this.$router.push("/");
-      return;
     }
-
-    this.loadComments();
+    await this.loadComments();
+    setTimeout(() => {
+      this.$root.$emit("Spinner::hide");
+    }, 300);
   },
 };
 </script>

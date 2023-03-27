@@ -80,12 +80,12 @@ export default {
     };
   },
 
-  /* created() {
+  created() {
     if (Object.keys(this.$store.state.user).length <= 0) {
       this.$router.push("/users");
       return;
     }
-  }, */
+  },
 };
 </script>
   

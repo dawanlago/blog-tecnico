@@ -31,7 +31,7 @@ export default {
     CardUsersVue,
   },
   methods: {
-    async loadPosts() {
+    async loadUsers() {
       const getAllUsers = new GetAllUsers();
       const users = await getAllUsers.execute();
 
@@ -39,7 +39,11 @@ export default {
     },
   },
   async created() {
-    this.loadPosts();
+    this.$root.$emit("Spinner::show");
+    await this.loadUsers();
+    setTimeout(() => {
+      this.$root.$emit("Spinner::hide");
+    }, 300);
   },
 };
 </script>

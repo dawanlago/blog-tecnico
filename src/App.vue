@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <Spinner />
     <v-main>
       <menu-vue />
       <router-view />
@@ -9,11 +10,16 @@
 
 <script>
 import MenuVue from "@/components/MenuVue.vue";
+import Spinner from "@/components/Spinner.vue";
+
 export default {
   name: "App",
-  components: { MenuVue },
-  data: () => ({
-    //
-  }),
+  components: { MenuVue, Spinner },
+
+  mounted() {
+    setTimeout(() => {
+      this.$root.$emit("Spinner::hide");
+    }, 300);
+  },
 };
 </script>
