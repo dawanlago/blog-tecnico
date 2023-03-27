@@ -2,9 +2,13 @@
   <div id="menu">
     <h1>Blog.com</h1>
     <ul>
-      <li v-if="$route.name != 'users'"><a href="/users"> Usuários </a></li>
-      <li v-if="$route.name != 'home'">
-        <a href="/">Posts</a>
+      <li>
+        <router-link v-if="$route.name != 'users'" to="/users"
+          >Usuários</router-link
+        >
+      </li>
+      <li>
+        <router-link v-if="$route.name != 'home'" to="/">Posts</router-link>
       </li>
     </ul>
   </div>
