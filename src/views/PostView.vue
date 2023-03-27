@@ -3,10 +3,11 @@
     <v-btn @click="back">Voltar</v-btn>
     <v-card variant="outlined" light>
       <v-card-title> {{ $store.state.post.title }} </v-card-title>
-      <v-card-subtitle
-        ><v-icon size="16">mdi-account</v-icon
-        >{{ $store.state.post.username }}</v-card-subtitle
-      >
+      <v-card-subtitle @click="handleUser($store.state.post.userId)">
+        <p>
+          <v-icon size="16">mdi-account</v-icon>{{ $store.state.post.username }}
+        </p>
+      </v-card-subtitle>
       <v-card-text> {{ $store.state.post.body }} </v-card-text>
     </v-card>
 
@@ -30,6 +31,7 @@
 import CardCommentsVue from "@/components/CardCommentsVue.vue";
 
 import { GetComments } from "@/services/GetComments";
+import { GetUser } from "@/services/GetUser";
 export default {
   name: "PostView",
   data: () => {
@@ -45,6 +47,17 @@ export default {
 
       this.numberComments = comments.length;
       this.$store.commit("setComments", comments);
+    },
+    async getUser(id) {
+      const getUser = new GetUser();
+      const user = await getUser.execute(id);
+
+      return user;
+    },
+    async handleUser(id) {
+      const user = await this.getUser(id);
+      this.$store.commit("setUser", user);
+      this.$router.push("/user");
     },
     back() {
       this.$router.back();
@@ -87,11 +100,16 @@ export default {
   }
 
   .v-card__subtitle {
-    display: flex;
-    align-items: center;
-    color: var(--primary) !important;
     text-decoration: none;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    p {
+      color: var(--primary) !important;
+      cursor: pointer;
+    }
     .v-icon {
       margin-right: 5px;
       color: var(--primary) !important;

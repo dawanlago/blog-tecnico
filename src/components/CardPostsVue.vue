@@ -1,10 +1,9 @@
 <template>
   <v-card variant="outlined" light>
     <v-card-title> {{ post.title }} </v-card-title>
-    <v-card-subtitle
-      ><v-icon size="16">mdi-account</v-icon
-      >{{ post.username }}</v-card-subtitle
-    >
+    <v-card-subtitle @click="handleUser(post.userId)">
+      <p><v-icon size="16">mdi-account</v-icon>{{ post.username }}</p>
+    </v-card-subtitle>
     <v-card-text> {{ post.body }} </v-card-text>
     <v-card-actions>
       <v-btn
@@ -18,6 +17,7 @@
 </template>
 
 <script>
+import { GetUser } from "@/services/GetUser";
 export default {
   name: "CardPostsVue",
   props: ["post"],
@@ -25,6 +25,18 @@ export default {
     handlePost(post) {
       this.$store.commit("setPost", post);
       this.$router.push("/post");
+    },
+    async getUser(id) {
+      const getUser = new GetUser();
+      const user = await getUser.execute(id);
+
+      return user;
+    },
+    async handleUser(id) {
+      const user = await this.getUser(id);
+      this.$store.commit("setUser", user);
+
+      this.$router.push("/user");
     },
   },
 };
@@ -54,12 +66,16 @@ export default {
   }
 
   .v-card__subtitle {
-    display: flex;
-    align-items: center;
-    color: var(--primary) !important;
     text-decoration: none;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
+    p {
+      color: var(--primary) !important;
+      cursor: pointer;
+    }
     .v-icon {
       margin-right: 5px;
       color: var(--primary) !important;

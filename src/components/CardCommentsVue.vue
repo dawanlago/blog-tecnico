@@ -1,10 +1,7 @@
 <template>
   <v-card variant="outlined" light>
     <v-card-title> {{ comment.name }} </v-card-title>
-    <v-card-subtitle
-      ><v-icon size="16">mdi-account</v-icon
-      >{{ comment.email | lowerCased }}</v-card-subtitle
-    >
+    <v-card-subtitle>{{ comment.email | lowerCased }}</v-card-subtitle>
     <v-card-text> {{ comment.body }} </v-card-text>
   </v-card>
 </template>

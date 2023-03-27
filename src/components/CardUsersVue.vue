@@ -1,5 +1,5 @@
 <template>
-  <v-card variant="outlined" light>
+  <v-card @click="handleUser(user.id)" variant="outlined" light>
     <v-card-title> {{ user.name }} </v-card-title>
     <v-card-text>
       <p><v-icon size="16">mdi-account</v-icon>{{ user.username }}</p>
@@ -11,9 +11,24 @@
 </template>
   
   <script>
+import { GetUser } from "@/services/GetUser";
 export default {
   name: "CardUsersVue",
   props: ["user"],
+  methods: {
+    async getUser(id) {
+      const getUser = new GetUser();
+      const user = await getUser.execute(id);
+
+      return user;
+    },
+    async handleUser(id) {
+      const user = await this.getUser(id);
+      this.$store.commit("setUser", user);
+
+      this.$router.push("/user");
+    },
+  },
   filters: {
     lowerCased(value) {
       return value.toLowerCase();
