@@ -1,31 +1,26 @@
 <template>
-  <div id="card-posts-vue">
-    <v-row no-gutters>
-      <v-col cols="12" v-for="(post, index) in $store.state.posts" :key="index">
-        <v-card variant="outlined" light>
-          <v-card-title> {{ post.title }} </v-card-title>
-          <v-card-subtitle
-            ><v-icon size="16">mdi-account</v-icon
-            >{{ post.username }}</v-card-subtitle
-          >
-          <v-card-text> {{ post.body }} </v-card-text>
-          <v-card-actions>
-            <v-btn
-              color="primary"
-              :block="$vuetify.breakpoint.xsOnly"
-              @click="handlePost(post)"
-              >Ver comentários</v-btn
-            >
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
+  <v-card variant="outlined" light>
+    <v-card-title> {{ post.title }} </v-card-title>
+    <v-card-subtitle
+      ><v-icon size="16">mdi-account</v-icon
+      >{{ post.username }}</v-card-subtitle
+    >
+    <v-card-text> {{ post.body }} </v-card-text>
+    <v-card-actions>
+      <v-btn
+        color="primary"
+        :block="$vuetify.breakpoint.xsOnly"
+        @click="handlePost(post)"
+        >Ver comentários</v-btn
+      >
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
 export default {
   name: "CardPostsVue",
+  props: ["post"],
   methods: {
     handlePost(post) {
       this.$store.commit("setPost", post);

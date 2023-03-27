@@ -1,7 +1,20 @@
 <template>
   <div class="users">
     <TitleVue title="Usuários" />
-    <CardUsersVue />
+    <div id="card-users-vue">
+      <v-row no-gutters>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          v-for="(user, index) in $store.state.users"
+          :key="index"
+        >
+          <CardUsersVue :user="user" />
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
   
@@ -22,7 +35,6 @@ export default {
       const getAllUsers = new GetAllUsers();
       const users = await getAllUsers.execute();
 
-      console.log(users);
       this.$store.commit("setUsers", users);
     },
   },

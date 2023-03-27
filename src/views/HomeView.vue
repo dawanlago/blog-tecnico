@@ -1,7 +1,17 @@
 <template>
   <div class="home">
     <TitleVue title="Posts" />
-    <CardPostsVue />
+    <div id="card-posts-vue">
+      <v-row no-gutters>
+        <v-col
+          cols="12"
+          v-for="(post, index) in $store.state.posts"
+          :key="index"
+        >
+          <CardPostsVue :post="post" />
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 

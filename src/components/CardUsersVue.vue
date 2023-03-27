@@ -1,33 +1,19 @@
 <template>
-  <div id="card-users-vue">
-    <v-row no-gutters>
-      <v-col
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-        v-for="(user, index) in $store.state.users"
-        :key="index"
-      >
-        <v-card variant="outlined" light>
-          <v-card-title> {{ user.name }} </v-card-title>
-          <v-card-text>
-            <p><v-icon size="16">mdi-account</v-icon>{{ user.username }}</p>
-            <p>
-              <v-icon size="16">mdi-email</v-icon>{{ user.email | lowerCased }}
-            </p>
-            <p><v-icon size="16">mdi-city</v-icon>{{ user.address.city }}</p>
-            <p><v-icon size="16">mdi-web</v-icon>{{ user.website }}</p>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
+  <v-card variant="outlined" light>
+    <v-card-title> {{ user.name }} </v-card-title>
+    <v-card-text>
+      <p><v-icon size="16">mdi-account</v-icon>{{ user.username }}</p>
+      <p><v-icon size="16">mdi-email</v-icon>{{ user.email | lowerCased }}</p>
+      <p><v-icon size="16">mdi-city</v-icon>{{ user.address.city }}</p>
+      <p><v-icon size="16">mdi-web</v-icon>{{ user.website }}</p>
+    </v-card-text>
+  </v-card>
 </template>
   
   <script>
 export default {
   name: "CardUsersVue",
+  props: ["user"],
   filters: {
     lowerCased(value) {
       return value.toLowerCase();

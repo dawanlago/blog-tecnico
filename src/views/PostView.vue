@@ -13,7 +13,16 @@
     <h3 class="title-comments">
       {{ numberComments }} comentário<span v-if="numberComments > 1">s</span>
     </h3>
-    <CardCommentsVue />
+    <div id="card-comments-vue">
+      <v-row no-gutters>
+        <v-col
+          cols="12"
+          v-for="(comment, index) in $store.state.comments"
+          :key="index"
+        >
+          <CardCommentsVue :comment="comment" /></v-col
+      ></v-row>
+    </div>
   </div>
 </template>
   

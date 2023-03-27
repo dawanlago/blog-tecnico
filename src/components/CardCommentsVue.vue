@@ -1,27 +1,18 @@
 <template>
-  <div id="card-comments-vue">
-    <v-row no-gutters>
-      <v-col
-        cols="12"
-        v-for="(comment, index) in $store.state.comments"
-        :key="index"
-      >
-        <v-card variant="outlined" light>
-          <v-card-title> {{ comment.name }} </v-card-title>
-          <v-card-subtitle
-            ><v-icon size="16">mdi-account</v-icon
-            >{{ comment.email | lowerCased }}</v-card-subtitle
-          >
-          <v-card-text> {{ comment.body }} </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
+  <v-card variant="outlined" light>
+    <v-card-title> {{ comment.name }} </v-card-title>
+    <v-card-subtitle
+      ><v-icon size="16">mdi-account</v-icon
+      >{{ comment.email | lowerCased }}</v-card-subtitle
+    >
+    <v-card-text> {{ comment.body }} </v-card-text>
+  </v-card>
 </template>
   
   <script>
 export default {
   name: "CardCommentsVue",
+  props: ["comment"],
   filters: {
     lowerCased(value) {
       return value.toLowerCase();
