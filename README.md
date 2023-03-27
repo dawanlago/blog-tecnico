@@ -1,24 +1,30 @@
-# blog
+# Desafio Alkabot
 
-## Project setup
-```
-yarn install
-```
+### Link do sistema em produção
+https://blogcom.netlify.app/
 
-### Compiles and hot-reloads for development
+### Após fazer o clone do projeto rodar o comando abaixo:
 ```
-yarn serve
+npm install
 ```
 
-### Compiles and minifies for production
+### Para compilação e execução de desenvolvimento rodar o comando abaixo:
 ```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
+npm run serve
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Bibliotecas usadas
+```
+vue: SPA Javascript
+vue-router: Usada para controle de rotas
+vuetify: Usada para estilização
+vuex: Usada para controle de estado
+axios: Usada para requisições da API
+```
+
+### Observações
+```
+Além dos requisitos pedidos também foram acrescentados as seguintes funcionalidades:
+  1 - Página com a lista de todos os usuários do blog;
+  2 - Página com os detalhes do usuário;
+```
