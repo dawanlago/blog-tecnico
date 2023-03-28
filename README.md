@@ -3,6 +3,11 @@
 ### Link do sistema em produção
 https://blogcom.netlify.app/
 
+### Primeiro é necessário clonar o projeto com o comando abaixo:
+```
+git clone https://github.com/dawanlago/blog-tecnico.git
+```
+
 ### Após fazer o clone do projeto rodar o comando abaixo:
 ```
 npm install
@@ -11,6 +16,11 @@ npm install
 ### Para compilação e execução de desenvolvimento rodar o comando abaixo:
 ```
 npm run serve
+```
+
+### Para executar basta acessar o navegador e abrir a URL abaixo:
+```
+http://localhost:8080/
 ```
 
 ### Bibliotecas usadas
